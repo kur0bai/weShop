@@ -1,19 +1,45 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from 'expo-router';
+import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import { useColorScheme } from 'react-native';
+import { useColorScheme } from 'nativewind';
+import { View } from 'react-native';
 
 import { AnimatedSplashOverlay } from '@/components/animated-icon';
-import AppTabs from '@/components/app-tabs';
 import '@/global.css';
 
 SplashScreen.preventAutoHideAsync();
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+export default function RootLayout() {
+  const { colorScheme } = useColorScheme();
+
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+    <View className={`flex-1 ${colorScheme === 'dark' ? 'dark' : ''}`}>
       <AnimatedSplashOverlay />
-      <AppTabs />
-    </ThemeProvider>
+
+      <Stack
+        screenOptions={{
+          headerShown: false,
+          contentStyle: { backgroundColor: 'transparent' },
+        }}
+      >
+        {/* Pantalla inicial: Login */}
+        <Stack.Screen name="index" />
+
+        {/* Grupo con AppTabs */}
+        <Stack.Screen name="(tabs)" />
+
+        {/* Pantalla de Checkout fuera de tabs */}
+        <Stack.Screen
+          name="checkout"
+          options={{
+            headerShown: true,
+            title: 'Pago',
+            headerStyle: {
+              backgroundColor: colorScheme === 'dark' ? '#09090b' : '#ffffff',
+            },
+            headerTintColor: colorScheme === 'dark' ? '#ffffff' : '#000000',
+          }}
+        />
+      </Stack>
+    </View>
   );
 }
