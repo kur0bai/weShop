@@ -1,0 +1,11 @@
+services:
+  vulnstore-backend:
+    build: .
+    container_name: vulnstore-backend
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+      JWT_SECRET: vulnstore-dev-secret-change-me
+      API_KEY: vs_live_9f8a7d6c5b4e3f2a1d0c
+    restart: unless-stopped
