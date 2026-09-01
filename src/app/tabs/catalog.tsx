@@ -1,2 +1,5 @@
 import CatalogScreen from '@/screens/CatalogScreen';
-export default CatalogScreen;
+
+export default function CatalogRoute() {
+  return <CatalogScreen />;
+}

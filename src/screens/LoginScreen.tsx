@@ -27,6 +27,7 @@ export default function LoginScreen() {
       const result = await login(email, hashed);
       if (result?.token) {
         await establishSession(result.token);
+        console.log('Going to catalog');
         router.replace('/tabs/catalog');
       } else {
         setError('Credenciales inválidas');

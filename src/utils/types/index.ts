@@ -2,6 +2,8 @@ export interface Product {
   id: string;
   name: string;
   price: number;
+  subtitle?: string;
+  image: string;
 }
 
 export interface UserProfile {

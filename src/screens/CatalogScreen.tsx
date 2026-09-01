@@ -11,7 +11,6 @@ type UIProduct = Product & {
   subtitle?: string;
 };
 
-// Galería de imágenes Pexels de respaldo en caso de que el backend solo envíe id, name y price
 const FALLBACK_IMAGES = [
   'https://images.pexels.com/photos/3780104/pexels-photo-3780104.jpeg?auto=compress&cs=tinysrgb&w=600',
   'https://images.pexels.com/photos/2905238/pexels-photo-2905238.jpeg?auto=compress&cs=tinysrgb&w=600',
@@ -31,6 +30,7 @@ export default function CatalogScreen() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    console.log('You are in catalog screen')
     fetchCatalog();
   }, []);
 

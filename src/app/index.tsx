@@ -1,2 +1,3 @@
-import CatalogScreen from '@/screens/CatalogScreen';
-export default CatalogScreen;
+import LoginScreen from "@/screens/LoginScreen";
+
+export default LoginScreen;
