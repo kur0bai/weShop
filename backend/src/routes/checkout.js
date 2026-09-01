@@ -3,8 +3,6 @@ const crypto = require('crypto');
 
 const router = express.Router();
 
-// POST /checkout
-// Body: { cart: Product[], card: { number, cvv, expiry } }
 router.post('/', (req, res) => {
   const { cart, card } = req.body ?? {};
 
